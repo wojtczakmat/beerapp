@@ -1,0 +1,39 @@
+<p>
+    <strong>Title:</strong>
+    <%= @event.title %>
+</p>
+<p>
+    <strong>Date:</strong>
+    <%= @event.date %>
+</p>
+<p>
+    <strong>Time:</strong>
+    <%= @event.time.strftime "%R" %>
+</p>
+<p>
+    <strong>Description:</strong>
+    <%= @event.description %>
+</p>
+<h2>Comments</h2>
+<% @event.comments.each do |comment| %>
+    <p>
+        <strong>Commenter:</strong>
+        <%= comment.commenter %>
+    <p/>
+    <p>
+        <strong>Comment:</strong>
+        <%= comment.body %>
+    </p>
+<% end %>
+<h2>Add a comment</h2>
+<%= form_for([@event, @event.comments.build]) do |f| %>
+    
+    <p>
+        <%= f.label :body %><br>
+        <%= f.text_field :body %>
+    </p>
+    <p>
+        <%= f.submit %>
+    </p>
+<% end %>
+<%= link_to 'Back', events_path %>

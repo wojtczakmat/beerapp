@@ -1,0 +1,10 @@
+<h1>A może piwo?</h1>
+
+<% if user_signed_in? %>
+        <h2>No pewnie!</h2><br>
+        <%= link_to 'Piwo!', controller: 'events' %><br>
+<% else %>
+        <%= link_to 'Log in', user_session_path %><br>
+        <%= link_to 'Sign up', new_user_registration_path %><br>
+<% end %>
+
